@@ -1,0 +1,6 @@
+@ApiAggileActors_HostAddress = http://localhost:5034
+
+GET {{ApiAggileActors_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
