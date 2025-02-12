@@ -5,7 +5,7 @@ using System.Net.Http.Headers;
 
 namespace ApiAggileActors.Services
 {
-    public class TwitterService: ITwitterService
+    public class TwitterService : ITwitterService
     {
         private readonly HttpClient _httpClient;
         private readonly TwitterSettings _settings;
@@ -21,9 +21,9 @@ namespace ApiAggileActors.Services
         {
             var cacheKey = string.Format(_settings.CacheKey, query);
 
-            if (_cache.TryGetValue(cacheKey, out string cachedTweets))
+            if (_cache.TryGetValue(cacheKey, out string? cachedTweets))
             {
-                return cachedTweets;
+                return cachedTweets ?? string.Empty;
             }
 
             var url = $"{_settings.BaseUrl}tweets/search/recent?query={query}";

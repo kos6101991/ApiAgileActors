@@ -4,7 +4,7 @@ using Microsoft.Extensions.Options;
 
 namespace ApiAggileActors.Services
 {
-    public class NewsApiService: INewsApiService
+    public class NewsApiService : INewsApiService
     {
         private readonly HttpClient _httpClient;
         private readonly NewsApiSettings _settings;
@@ -21,9 +21,9 @@ namespace ApiAggileActors.Services
             var cacheKey = string.Format(_settings.CacheKey, query);
 
             // Check if we have cached data for the specific query
-            if (_cache.TryGetValue(cacheKey, out string cachedNews))
+            if (_cache.TryGetValue(cacheKey, out string? cachedNews))
             {
-                return cachedNews;
+                return cachedNews ?? string.Empty;
             }
 
             // if the cache is empty call the API and put them in the cache with the above key
